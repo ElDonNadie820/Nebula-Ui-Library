@@ -2,6 +2,8 @@
 ## Booting The Library
 ```lua
 local Nebula = loadstring(game:HttpGet("https://pastebin.com/raw/LsCy0sFq"))()
+or
+local Nebula = loadstring(game:HttpGet("https://raw.githubusercontent.com/ElDonNadie820/Nebula-Ui-Library/refs/heads/main/Nebula%20Library.lua"))()
 ```
 ## Making The Gui
 ```lua
