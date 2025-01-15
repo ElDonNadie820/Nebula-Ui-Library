@@ -3,7 +3,7 @@
 ```lua
 local Nebula = loadstring(game:HttpGet("https://pastebin.com/raw/LsCy0sFq"))()
 
-or if the first dont work
+if the first dont work then use
 
 local Nebula = loadstring(game:HttpGet("https://raw.githubusercontent.com/ElDonNadie820/Nebula-Ui-Library/refs/heads/main/Nebula%20Library.lua"))()
 ```
