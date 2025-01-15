@@ -10,6 +10,10 @@ local Frame1 = _G.Main:New("Name Of The Hub")
 ## Making A Button
 ```lua
 Frame1:Button("Print Hi", function()
-	-- Here Goes What The Button Will Do
+-- Here Goes What The Button Will Do
 end)
+```
+## Put This At The End Of The Script (Required)
+```
+return _G.Main
 ```
