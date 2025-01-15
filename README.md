@@ -3,7 +3,7 @@
 ```lua
 local Nebula = loadstring(game:HttpGet("https://pastebin.com/raw/LsCy0sFq"))()
 ```
-## Making The Frame
+## Making The Gui
 ```lua
 local Frame1 = _G.Main:New("Name Of The Hub")
 ```
@@ -17,5 +17,5 @@ end)
 ```
 return _G.Main
 ```
-
+## 
 Only button for the moment bc im making toggles, dropdown and slider.
