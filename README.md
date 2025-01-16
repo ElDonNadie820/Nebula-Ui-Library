@@ -22,7 +22,7 @@ Frame1:Button("Print Hi", function()
 end)
 ```
 ## Put This At The End Of The Script (Required)
-```
+```lua
 return _G.Main
 ```
 ## 
