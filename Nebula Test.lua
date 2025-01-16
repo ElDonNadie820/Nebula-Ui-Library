@@ -1,332 +1,181 @@
 _G.Main = {}
 
 function _G.Main:New(Title)
-	
-	local NebulaLibrary = Instance.new("ScreenGui")
-	local Frame = Instance.new("Frame")
-	local UICorner = Instance.new("UICorner")
-	local TopBar = Instance.new("Frame")
-	local UICorner_2 = Instance.new("UICorner")
-	local Frame_2 = Instance.new("Frame")
-	local X = Instance.new("ImageButton")
-	local ImageButton = Instance.new("ImageButton")
-	local Name = Instance.new("TextLabel")
-	local Content = Instance.new("Frame")
-	local UIListLayout = Instance.new("UIListLayout")
-	local Minimized = Instance.new("Frame")
-	local UICorner_3 = Instance.new("UICorner")
-	local X_2 = Instance.new("ImageButton")
-	local Maximizar = Instance.new("ImageButton")
-	local Name_2 = Instance.new("TextLabel")
-	local Tabs = Instance.new("Frame")  -- Nuevo contenedor para las pestañas
-	local TabButtons = Instance.new("Frame")  -- Contenedor de botones para las pestañas
-	local TabContents = Instance.new("Frame")  -- Contenedor de contenidos de las pestañas
-	local ActiveTab = nil
+    -- Creación de elementos principales
+    local NebulaLibrary = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local TopBar = Instance.new("Frame")
+    local UICorner_2 = Instance.new("UICorner")
+    local CloseButton = Instance.new("ImageButton")
+    local MinimizeButton = Instance.new("ImageButton")
+    local TitleLabel = Instance.new("TextLabel")
+    local Content = Instance.new("Frame")
+    local UIListLayout = Instance.new("UIListLayout")
+    local Minimized = Instance.new("Frame")
+    local UICorner_3 = Instance.new("UICorner")
+    local MaximizeButton = Instance.new("ImageButton")
+    local MinimizedTitleLabel = Instance.new("TextLabel")
 
-	--Properties:
+    -- Propiedades principales
+    NebulaLibrary.Name = "Nebula Library"
+    NebulaLibrary.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    NebulaLibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-	NebulaLibrary.Name = "Nebula Library"
-	NebulaLibrary.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-	NebulaLibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    Frame.Parent = NebulaLibrary
+    Frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    Frame.BorderSizePixel = 0
+    Frame.Position = UDim2.new(0.316, 0, 0.055, 0)
+    Frame.Size = UDim2.new(0, 400, 0, 450)
+    Frame.Active = true
+    Frame.Draggable = true
 
-	Frame.Parent = NebulaLibrary
-	Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(0.316223651, 0, 0.0553359687, 0)
-	Frame.Size = UDim2.new(0, 400, 0, 450)
-	Frame.Active = true
-	Frame.Draggable = true
+    UICorner.Parent = Frame
 
-	UICorner.Parent = Frame
+    -- Barra superior (TopBar)
+    TopBar.Parent = Frame
+    TopBar.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    TopBar.Size = UDim2.new(0, 400, 0, 50)
+    UICorner_2.Parent = TopBar
 
-	TopBar.Name = "TopBar"
-	TopBar.Parent = Frame
-	TopBar.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-	TopBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	TopBar.BorderSizePixel = 0
-	TopBar.Size = UDim2.new(0, 400, 0, 50)
+    -- Botón de Cierre
+    CloseButton.Name = "CloseButton"
+    CloseButton.Parent = TopBar
+    CloseButton.BackgroundTransparency = 1
+    CloseButton.Position = UDim2.new(0.9125, 0, 0.1377, 0)
+    CloseButton.Size = UDim2.new(0, 35, 0, 35)
+    CloseButton.Image = "http://www.roblox.com/asset/?id=6031094678"
+    CloseButton.ImageColor3 = Color3.fromRGB(220, 220, 220)
 
-	UICorner_2.Parent = TopBar
+    -- Botón de Minimizar
+    MinimizeButton.Name = "MinimizeButton"
+    MinimizeButton.Parent = TopBar
+    MinimizeButton.BackgroundTransparency = 1
+    MinimizeButton.Position = UDim2.new(0.824999988, 0, 0, 0)
+    MinimizeButton.Size = UDim2.new(0, 35, 0, 35)
+    MinimizeButton.Image = "http://www.roblox.com/asset/?id=6026568240"
+    MinimizeButton.ImageColor3 = Color3.fromRGB(220, 220, 220)
 
-	Frame_2.Name = " "
-	Frame_2.Parent = TopBar
-	Frame_2.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-	Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Frame_2.BorderSizePixel = 0
-	Frame_2.Position = UDim2.new(0, 0, 0.419999987, 0)
-	Frame_2.Size = UDim2.new(0, 400, 0, 29)
-	Frame_2.ZIndex = 0
+    -- Título
+    TitleLabel.Name = "TitleLabel"
+    TitleLabel.Parent = TopBar
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Size = UDim2.new(0, 200, 0, 50)
+    TitleLabel.Font = Enum.Font.RobotoMono
+    TitleLabel.Text = Title
+    TitleLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+    TitleLabel.TextScaled = true
+    TitleLabel.TextSize = 14
+    TitleLabel.TextWrapped = true
 
-	X.Name = "X"
-	X.Parent = TopBar
-	X.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	X.BackgroundTransparency = 1.000
-	X.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	X.BorderSizePixel = 0
-	X.Position = UDim2.new(0.912500024, 0, 0.13777779, 0)
-	X.Size = UDim2.new(0, 35, 0, 35)
-	X.Image = "http://www.roblox.com/asset/?id=6031094678"
-	X.ImageColor3 = Color3.fromRGB(130, 130, 130)
+    -- Contenido
+    Content.Parent = Frame
+    Content.BackgroundTransparency = 1
+    Content.Position = UDim2.new(0, 0, 0.111, 0)
+    Content.Size = UDim2.new(0, 400, 0, 400)
 
-	ImageButton.Name = "-"
-	ImageButton.Parent = TopBar
-	ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageButton.BackgroundTransparency = 1.000
-	ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButton.BorderSizePixel = 0
-	ImageButton.Position = UDim2.new(0.824999988, 0, -0.00222221366, 0)
-	ImageButton.Size = UDim2.new(0, 35, 0, 35)
-	ImageButton.Image = "http://www.roblox.com/asset/?id=6026568240"
-	ImageButton.ImageColor3 = Color3.fromRGB(130, 130, 130)
+    UIListLayout.Parent = Content
+    UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 10)
 
-	Name.Name = "Name"
-	Name.Parent = TopBar
-	Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Name.BackgroundTransparency = 1.000
-	Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Name.BorderSizePixel = 0
-	Name.Size = UDim2.new(0, 200, 0, 50)
-	Name.Font = Enum.Font.RobotoMono
-	Name.Text = "Name"
-	Name.TextColor3 = Color3.fromRGB(255, 170, 0)
-	Name.TextScaled = true
-	Name.TextSize = 14.000
-	Name.TextWrapped = true
-	Name.Text = Title
+    -- Panel Minimizado
+    Minimized.Name = "Minimized"
+    Minimized.Parent = NebulaLibrary
+    Minimized.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    Minimized.Position = UDim2.new(0.316, 0, 0.45, 0)
+    Minimized.Size = UDim2.new(0, 400, 0, 50)
+    Minimized.Visible = false
+    Minimized.Active = true
+    Minimized.Draggable = true
 
-	Content.Name = "Content"
-	Content.Parent = Frame
-	Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Content.BackgroundTransparency = 1.000
-	Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Content.BorderSizePixel = 0
-	Content.Position = UDim2.new(0, 0, 0.111111112, 0)
-	Content.Size = UDim2.new(0, 400, 0, 400)
+    UICorner_3.Parent = Minimized
 
-	UIListLayout.Parent = Content
-	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.Padding = UDim.new(0, 10)
+    -- Botón de Cierre del Panel Minimizado
+    local CloseMinimizedButton = Instance.new("ImageButton")
+    CloseMinimizedButton.Parent = Minimized
+    CloseMinimizedButton.BackgroundTransparency = 1
+    CloseMinimizedButton.Position = UDim2.new(0.9125, 0, 0.2177, 0)
+    CloseMinimizedButton.Size = UDim2.new(0, 35, 0, 35)
+    CloseMinimizedButton.Image = "http://www.roblox.com/asset/?id=6031094678"
+    CloseMinimizedButton.ImageColor3 = Color3.fromRGB(220, 220, 220)
 
-	Minimized.Name = "Minimized"
-	Minimized.Parent = NebulaLibrary
-	Minimized.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-	Minimized.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Minimized.BorderSizePixel = 0
-	Minimized.Position = UDim2.new(0.316223651, 0, 0.450373292, 0)
-	Minimized.Size = UDim2.new(0, 400, 0, 50)
-	Minimized.Visible = false
-	Minimized.Active = true
-	Minimized.Draggable = true
+    -- Botón Maximizar
+    MaximizeButton.Parent = Minimized
+    MaximizeButton.BackgroundTransparency = 1
+    MaximizeButton.Position = UDim2.new(0.824999988, 0, 0.2177, 0)
+    MaximizeButton.Size = UDim2.new(0, 35, 0, 35)
+    MaximizeButton.Image = "http://www.roblox.com/asset/?id=6026568256"
+    MaximizeButton.ImageColor3 = Color3.fromRGB(220, 220, 220)
 
-	UICorner_3.Parent = Minimized
+    -- Título Panel Minimizado
+    MinimizedTitleLabel.Name = "MinimizedTitleLabel"
+    MinimizedTitleLabel.Parent = Minimized
+    MinimizedTitleLabel.BackgroundTransparency = 1
+    MinimizedTitleLabel.Size = UDim2.new(0, 200, 0, 50)
+    MinimizedTitleLabel.Font = Enum.Font.RobotoMono
+    MinimizedTitleLabel.Text = Title
+    MinimizedTitleLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+    MinimizedTitleLabel.TextScaled = true
+    MinimizedTitleLabel.TextSize = 14
+    MinimizedTitleLabel.TextWrapped = true
 
-	X_2.Name = "X"
-	X_2.Parent = Minimized
-	X_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	X_2.BackgroundTransparency = 1.000
-	X_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	X_2.BorderSizePixel = 0
-	X_2.Position = UDim2.new(0.912500024, 0, 0.217777714, 0)
-	X_2.Size = UDim2.new(0, 35, 0, 35)
-	X_2.Image = "http://www.roblox.com/asset/?id=6031094678"
-	X_2.ImageColor3 = Color3.fromRGB(130, 130, 130)
+    -- Scripts de Funcionalidad
 
-	Maximizar.Name = "Maximizar"
-	Maximizar.Parent = Minimized
-	Maximizar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Maximizar.BackgroundTransparency = 1.000
-	Maximizar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Maximizar.BorderSizePixel = 0
-	Maximizar.Position = UDim2.new(0.824999988, 0, 0.217777714, 0)
-	Maximizar.Size = UDim2.new(0, 35, 0, 35)
-	Maximizar.Image = "http://www.roblox.com/asset/?id=6026568256"
-	Maximizar.ImageColor3 = Color3.fromRGB(130, 130, 130)
+    -- Cerrar ventana
+    CloseButton.MouseButton1Click:Connect(function()
+        NebulaLibrary:Destroy()
+    end)
 
-	Name_2.Name = "Name"
-	Name_2.Parent = Minimized
-	Name_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Name_2.BackgroundTransparency = 1.000
-	Name_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Name_2.BorderSizePixel = 0
-	Name_2.Size = UDim2.new(0, 200, 0, 50)
-	Name_2.Font = Enum.Font.RobotoMono
-	Name_2.Text = "Name"
-	Name_2.TextColor3 = Color3.fromRGB(255, 170, 0)
-	Name_2.TextScaled = true
-	Name_2.TextSize = 14.000
-	Name_2.TextWrapped = true
-	Name_2.Text = Title
+    -- Minimizar ventana
+    MinimizeButton.MouseButton1Click:Connect(function()
+        Frame.Visible = false
+        Minimized.Visible = true
+    end)
 
-	Tabs.Name = "Tabs"
-	Tabs.Parent = Frame
-	Tabs.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-	Tabs.Size = UDim2.new(1, 0, 0, 40)
-	Tabs.Position = UDim2.new(0, 0, 0.05, 0)
+    -- Maximizar ventana
+    MaximizeButton.MouseButton1Click:Connect(function()
+        Minimized.Visible = false
+        Frame.Visible = true
+    end)
 
-	TabButtons.Name = "TabButtons"
-	TabButtons.Parent = Tabs
-	TabButtons.BackgroundTransparency = 1
-	TabButtons.Size = UDim2.new(1, 0, 1, 0)
+    -- Cerrar ventana minimizada
+    CloseMinimizedButton.MouseButton1Click:Connect(function()
+        NebulaLibrary:Destroy()
+    end)
 
-	TabContents.Name = "TabContents"
-	TabContents.Parent = Content
-	TabContents.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TabContents.BackgroundTransparency = 1
-	TabContents.Size = UDim2.new(1, 0, 1, 0)
-	TabContents.Position = UDim2.new(0, 0, 0.05, 0)
+    -- Agregar botones
+    _G.Frame = {}
+    function _G.Frame:Button(Name, Call)
+        local Button = Instance.new("Frame")
+        local ButtonName = Instance.new("TextLabel")
+        local Click = Instance.new("ImageButton")
 
-	-- Scripts:
+        Button.Name = "Button"
+        Button.Parent = Content
+        Button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        Button.Size = UDim2.new(0, 400, 0, 50)
 
-	local function JYTGTL_fake_script() -- X.RemoveNebulaLibraryOnClick 
-		local script = Instance.new('LocalScript', X)
+        ButtonName.Name = "ButtonName"
+        ButtonName.Parent = Button
+        ButtonName.BackgroundTransparency = 1
+        ButtonName.Size = UDim2.new(0, 150, 0, 50)
+        ButtonName.Font = Enum.Font.SourceSans
+        ButtonName.Text = Name
+        ButtonName.TextColor3 = Color3.fromRGB(255, 170, 0)
+        ButtonName.TextScaled = true
 
-		local button = script.Parent
-		local nebulaLibrary = button.Parent.Parent.Parent.Parent
+        Click.Name = "Click"
+        Click.Parent = Button
+        Click.BackgroundTransparency = 1
+        Click.Position = UDim2.new(0.875, 0, 0, 0)
+        Click.Size = UDim2.new(0, 50, 0, 43)
+        Click.Image = "http://www.roblox.com/asset/?id=6031229361"
+        Click.ImageColor3 = Color3.fromRGB(130, 130, 130)
 
-		button.MouseButton1Click:Connect(function()
-			nebulaLibrary:Destroy()
-		end)
+        Click.MouseButton1Click:Connect(function()
+            pcall(Call)
+        end)
+    end
 
-
-	end
-	coroutine.wrap(JYTGTL_fake_script)()
-	local function AXWFV_fake_script() -- ImageButton.MinimizeFrameOnClick 
-		local script = Instance.new('LocalScript', ImageButton)
-
-		local button = script.Parent
-		local frame = button.Parent.Parent
-		local minimizedFrame = frame.Parent:FindFirstChild("Minimized")
-
-		button.MouseButton1Click:Connect(function()
-			frame.Visible = false
-			if minimizedFrame then
-				minimizedFrame.Visible = true
-				minimizedFrame.BackgroundTransparency = 1
-				for i = 1, 0, -0.1 do
-					minimizedFrame.BackgroundTransparency = i
-					task.wait(0.02)
-				end
-			end
-		end)
-
-
-	end
-	coroutine.wrap(AXWFV_fake_script)()
-	local function LMINIC_fake_script() -- X_2.RemoveNebulaLibraryOnClick 
-		local script = Instance.new('LocalScript', X_2)
-
-		local button = script.Parent
-		local nebulaLibrary = button.Parent.Parent.Parent
-
-		button.MouseButton1Click:Connect(function()
-			nebulaLibrary:Destroy()
-		end)
-
-
-	end
-	coroutine.wrap(LMINIC_fake_script)()
-	local function QKEUK_fake_script() -- Maximizar.MaximizeFrameOnClick 
-		local script = Instance.new('LocalScript', Maximizar)
-
-		local button = script.Parent
-		local minimizedFrame = button.Parent
-		local frame = minimizedFrame.Parent:FindFirstChild("Frame")
-
-		button.MouseButton1Click:Connect(function()
-			minimizedFrame.Visible = false
-			if frame then
-				frame.Visible = true
-				frame.BackgroundTransparency = 1
-				for i = 1, 0, -0.1 do
-					frame.BackgroundTransparency = i
-					task.wait(0.02)
-				end
-			end
-		end)
-
-
-	end
-	coroutine.wrap(QKEUK_fake_script)()
-
-	function _G.Main:AddTab(TabName, TabContent)
-		local TabButton = Instance.new("TextButton")
-		TabButton.Parent = TabButtons
-		TabButton.Text = TabName
-		TabButton.Size = UDim2.new(0, 100, 1, 0)
-		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		TabButton.BackgroundTransparency = 1
-		TabButton.Font = Enum.Font.SourceSans
-		TabButton.TextSize = 16
-
-		TabButton.MouseButton1Click:Connect(function()
-			-- Set the active tab
-			if ActiveTab then
-				ActiveTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-			end
-			ActiveTab = TabButton
-			ActiveTab.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
-
-			-- Update the content for the active tab
-			for _, child in pairs(TabContents:GetChildren()) do
-				child.Visible = false
-			end
-			TabContent.Parent = TabContents
-			TabContent.Visible = true
-		end)
-	end
-	
-	-- Default tab
-	_G.Main:AddTab("Tab1", Instance.new("Frame"))
-	
-	_G.Frame = {}
-	function _G.Frame:Button(Name,Call)
-		
-		local Button = Instance.new("Frame")
-		local Click = Instance.new("ImageButton")
-		local ButtonName = Instance.new("TextLabel")
-		
-		Button.Name = "Button"
-		Button.Parent = Content
-		Button.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-		Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		Button.BorderSizePixel = 0
-		Button.Position = UDim2.new(0, 0, 0.300000012, 0)
-		Button.Size = UDim2.new(0, 400, 0, 50)
-		
-		ButtonName.Name = "ButtonName"
-		ButtonName.Parent = Button
-		ButtonName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonName.BackgroundTransparency = 1.000
-		ButtonName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		ButtonName.BorderSizePixel = 0
-		ButtonName.Size = UDim2.new(0, 150, 0, 50)
-		ButtonName.Font = Enum.Font.SourceSans
-		ButtonName.Text = "Button"
-		ButtonName.TextColor3 = Color3.fromRGB(255, 170, 0)
-		ButtonName.TextScaled = true
-		ButtonName.TextSize = 14.000
-		ButtonName.TextWrapped = true
-		ButtonName.Text = Name
-		
-		Click.Name = "Click"
-		Click.Parent = Button
-		Click.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Click.BackgroundTransparency = 1.000
-		Click.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		Click.BorderSizePixel = 0
-		Click.Position = UDim2.new(0.875, 0, 0, 0)
-		Click.Size = UDim2.new(0, 50, 0, 43)
-		Click.Image = "http://www.roblox.com/asset/?id=6031229361"
-		Click.ImageColor3 = Color3.fromRGB(130, 130, 130)
-		
-		Click.MouseButton1Click:Connect(function()
-			
-			pcall(Call)
-			
-		end)
-		
-	end
-	
-	return _G.Frame
+    return _G.Frame
 end
