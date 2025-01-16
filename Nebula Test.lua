@@ -18,6 +18,8 @@ function _G.Main:New(Title)
 	local X_2 = Instance.new("ImageButton")
 	local Maximizar = Instance.new("ImageButton")
 	local Name_2 = Instance.new("TextLabel")
+	local TabBar = Instance.new("Frame")
+	local TabList = Instance.new("UIListLayout")
 
 	--Properties:
 
@@ -44,6 +46,18 @@ function _G.Main:New(Title)
 	TopBar.Size = UDim2.new(0, 400, 0, 50)
 
 	UICorner_2.Parent = TopBar
+
+	TabBar.Name = "TabBar"
+    TabBar.Parent = Frame
+    TabBar.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+    TabBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TabBar.BorderSizePixel = 0
+    TabBar.Position = UDim2.new(0, 0, 0.1, 0)
+    TabBar.Size = UDim2.new(0, 400, 0, 30)
+    
+    TabList.Parent = TabBar
+    TabList.SortOrder = Enum.SortOrder.LayoutOrder
+    TabList.Padding = UDim.new(0, 10)
 
 	Frame_2.Name = " "
 	Frame_2.Parent = TopBar
@@ -226,6 +240,48 @@ function _G.Main:New(Title)
 
 	end
 	coroutine.wrap(QKEUK_fake_script)()
+
+	function _G.Main:AddTab(TabName, ContentFrame)
+        local TabButton = Instance.new("TextButton")
+        TabButton.Name = TabName
+        TabButton.Parent = TabBar
+        TabButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+        TabButton.BorderSizePixel = 0
+        TabButton.Size = UDim2.new(0, 100, 0, 30)
+        TabButton.Font = Enum.Font.SourceSans
+        TabButton.Text = TabName
+        TabButton.TextColor3 = Color3.fromRGB(255, 170, 0)
+        TabButton.TextScaled = true
+        TabButton.TextSize = 14
+        TabButton.TextWrapped = true
+        
+        -- Hacer que la pestaña cambie el contenido al ser presionada
+        TabButton.MouseButton1Click:Connect(function()
+            for _, tabContent in pairs(Content:GetChildren()) do
+                if tabContent:IsA("Frame") then
+                    tabContent.Visible = false
+                end
+            end
+            
+            -- Muestra el contenido de esta pestaña
+            ContentFrame.Visible = true
+        end)
+
+        -- Añadir el contenido a la ventana principal
+        ContentFrame.Parent = Content
+        ContentFrame.Size = UDim2.new(0, 400, 0, 300)
+        ContentFrame.Position = UDim2.new(0, 0, 0, 0)
+        ContentFrame.Visible = false  -- No visible inicialmente
+	end
+
+	local Tab1Content = Instance.new("Frame")
+    local Tab1Label = Instance.new("TextLabel")
+    Tab1Label.Parent = Tab1Content
+    Tab1Label.Text = "Contenido de la primera pestaña"
+    Tab1Label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Tab1Label.Font = Enum.Font.SourceSans
+    Tab1Label.TextSize = 20
+    Tab1Label.Size = UDim2.new(0, 400, 0, 50)
 	
 	_G.Frame = {}
 	function _G.Frame:Button(Name,Call)
@@ -277,5 +333,4 @@ function _G.Main:New(Title)
 	end
 	
 	return _G.Frame
-	
 end
