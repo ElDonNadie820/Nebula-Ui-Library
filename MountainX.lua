@@ -14,11 +14,14 @@ local Clear = Instance.new("TextButton")
 local Inject = Instance.new("TextButton")
 local Open = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
+local Message = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local SkibidiText = Instance.new("TextLabel")
 
 --Properties:
 
 MountainExecutor.Name = "Mountain Executor"
-MountainExecutor.Parent = game.StarterGui["MountainX Executor, Hub, Lib"]
+MountainExecutor.Parent = game.Players.LocalPlayer.PlayerGui
 MountainExecutor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MountainX.Name = "Mountain X"
@@ -177,9 +180,35 @@ Open.TextWrapped = true
 UICorner_3.CornerRadius = UDim.new(0, 12)
 UICorner_3.Parent = Open
 
+Message.Name = "Message"
+Message.Parent = MountainExecutor
+Message.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Message.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Message.BorderSizePixel = 0
+Message.Position = UDim2.new(0.812558591, 0, 0.762845874, 0)
+Message.Size = UDim2.new(0.168697283, 0, 0.197628453, 0)
+Message.Visible = false
+
+UICorner_4.CornerRadius = UDim.new(0, 12)
+UICorner_4.Parent = Message
+
+SkibidiText.Name = "SkibidiText"
+SkibidiText.Parent = Message
+SkibidiText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SkibidiText.BackgroundTransparency = 1.000
+SkibidiText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+SkibidiText.BorderSizePixel = 0
+SkibidiText.Position = UDim2.new(0, 0, 0.129999995, 0)
+SkibidiText.Size = UDim2.new(1, 0, 0.74000001, 0)
+SkibidiText.Font = Enum.Font.Gotham
+SkibidiText.Text = "Injected Now You Can Execute"
+SkibidiText.TextColor3 = Color3.fromRGB(85, 255, 255)
+SkibidiText.TextSize = 25.000
+SkibidiText.TextWrapped = true
+
 -- Scripts:
 
-local function CODJGW_fake_script() -- X.DisableNebulaExecutorOnClick 
+local function VTRNI_fake_script() -- X.DisableNebulaExecutorOnClick 
 	local script = Instance.new('LocalScript', X)
 
 	local xButton = script.Parent
@@ -193,8 +222,8 @@ local function CODJGW_fake_script() -- X.DisableNebulaExecutorOnClick
 	
 	
 end
-coroutine.wrap(CODJGW_fake_script)()
-local function LMBAIG_fake_script() -- TextButton.ToggleVisibilityOnClick 
+coroutine.wrap(VTRNI_fake_script)()
+local function KANDE_fake_script() -- TextButton.ToggleVisibilityOnClick 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local minusButton = script.Parent
@@ -210,8 +239,8 @@ local function LMBAIG_fake_script() -- TextButton.ToggleVisibilityOnClick
 	
 	
 end
-coroutine.wrap(LMBAIG_fake_script)()
-local function CDXP_fake_script() -- TextBox.TextBoxDefaultText 
+coroutine.wrap(KANDE_fake_script)()
+local function FOPETT_fake_script() -- TextBox.TextBoxDefaultText 
 	local script = Instance.new('LocalScript', TextBox)
 
 	local textBox = script.Parent
@@ -222,8 +251,8 @@ local function CDXP_fake_script() -- TextBox.TextBoxDefaultText
 	    end
 	end)
 end
-coroutine.wrap(CDXP_fake_script)()
-local function ZEJU_fake_script() -- Execute.Execute 
+coroutine.wrap(FOPETT_fake_script)()
+local function WHCKY_fake_script() -- Execute.Execute 
 	local script = Instance.new('LocalScript', Execute)
 
 	local button = script.Parent
@@ -233,8 +262,8 @@ local function ZEJU_fake_script() -- Execute.Execute
 		loadstring(textbox.Text)()
 	end)
 end
-coroutine.wrap(ZEJU_fake_script)()
-local function DFGTQH_fake_script() -- Clear.ClearTextBoxOnClick 
+coroutine.wrap(WHCKY_fake_script)()
+local function VMJZ_fake_script() -- Clear.ClearTextBoxOnClick 
 	local script = Instance.new('LocalScript', Clear)
 
 	local clearButton = script.Parent
@@ -248,8 +277,8 @@ local function DFGTQH_fake_script() -- Clear.ClearTextBoxOnClick
 	
 	
 end
-coroutine.wrap(DFGTQH_fake_script)()
-local function SHMDOV_fake_script() -- MountainX.Drag 
+coroutine.wrap(VMJZ_fake_script)()
+local function GYZUFM_fake_script() -- MountainX.Drag 
 	local script = Instance.new('LocalScript', MountainX)
 
 	local UIS = game:GetService("UserInputService")
@@ -289,12 +318,13 @@ local function SHMDOV_fake_script() -- MountainX.Drag
 	end)
 	
 end
-coroutine.wrap(SHMDOV_fake_script)()
-local function RPXM_fake_script() -- Inject.Inject 
+coroutine.wrap(GYZUFM_fake_script)()
+local function QXVI_fake_script() -- Inject.Inject 
 	local script = Instance.new('LocalScript', Inject)
 
 	local inject = script.Parent
 	local injected = inject:FindFirstChild("Injected")
+	local Msg = inject.Parent.Parent:FindFirstChild("Message")
 	
 	inject.MouseButton1Click:Connect(function()
 		
@@ -306,11 +336,14 @@ local function RPXM_fake_script() -- Inject.Inject
 		inject.Text = "Inject"
 		script.Enabled = false
 		injected.Enabled = true
+		Msg.Visible = true
+		wait(1)
+		Msg.Visible = false
 		
 	end)
 end
-coroutine.wrap(RPXM_fake_script)()
-local function PCTN_fake_script() -- Inject.Injected 
+coroutine.wrap(QXVI_fake_script)()
+local function JCDBP_fake_script() -- Inject.Injected 
 	local script = Instance.new('LocalScript', Inject)
 
 	local inject = script.Parent
@@ -323,8 +356,8 @@ local function PCTN_fake_script() -- Inject.Injected
 		
 	end)
 end
-coroutine.wrap(PCTN_fake_script)()
-local function RFUHC_fake_script() -- Open.ToggleVisibilityOnOpenClick 
+coroutine.wrap(JCDBP_fake_script)()
+local function QMJWW_fake_script() -- Open.ToggleVisibilityOnOpenClick 
 	local script = Instance.new('LocalScript', Open)
 
 	local openButton = script.Parent
@@ -339,4 +372,4 @@ local function RFUHC_fake_script() -- Open.ToggleVisibilityOnOpenClick
 	
 	
 end
-coroutine.wrap(RFUHC_fake_script)()
+coroutine.wrap(QMJWW_fake_script)()
