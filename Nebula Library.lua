@@ -1,4 +1,4 @@
-Nebula = {}
+local Nebula = {}
 
 function Nebula:CreateUi(Title)
 	
@@ -279,3 +279,5 @@ function Nebula:CreateUi(Title)
 	return NebulaFrame
 	
 end
+
+return Nebula
