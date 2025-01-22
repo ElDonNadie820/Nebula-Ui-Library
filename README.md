@@ -17,10 +17,7 @@ Frame1:Button("Print Hi", function()
 -- Here Goes What The Button Will Do
 end)
 ```
-## Put This At The End Of The Script (Required)
-```lua
-return Nebula
-```
+
 ## 
 Only button for the moment bc im making toggles, dropdown and slider.
 
