@@ -1,6 +1,6 @@
-_G.Main = {}
+Nebula = {}
 
-function _G.Main:New(Title)
+function Nebula:CreateUi(Title)
 	
 	local NebulaLibrary = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
@@ -227,8 +227,8 @@ function _G.Main:New(Title)
 	end
 	coroutine.wrap(QKEUK_fake_script)()
 	
-	_G.Frame = {}
-	function _G.Frame:Button(Name,Call)
+	local NebulaFrame = {}
+	function NebulaFrame:Button(Name,Call)
 		
 		local Button = Instance.new("Frame")
 		local Click = Instance.new("ImageButton")
@@ -276,6 +276,6 @@ function _G.Main:New(Title)
 		
 	end
 	
-	return _G.Frame
+	return NebulaFrame
 	
 end
